@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>이벤트 객체</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <button>아메리카노</button>
+  <button>라떼</button>
+  <input type = "text" placeholder="원하는 메뉴를 써주세요.">
+  <button class='find'>찾기</button>
+  
+  <script>
+    const btns = document.querySelectorAll('button')
+    const menu1 = btns[0];
+    const menu2 = btns[1];
+    const inputs = document.querySelector('input')
+    const find = document.querySelector('.find') 
+   
+    find.addEventListener('click',checkMenu);
+    
+    inputs.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        checkMenu();
+      }
+    });
+
+    function checkMenu() {
+      const inputValue = inputs.value.trim();
+      if (inputValue === '아메리카노' || inputValue === '라떼') {
+        console.log(inputValue + '은(는) 메뉴에 있습니다');
+      } else {
+        console.log(inputValue + '은(는) 메뉴에 없습니다');
+      }
+      inputs.value = '';
+    }
+
+    function handleClick() {
+      console.log(this.textContent + '를 선택했습니다');
+    }
+
+    menu1.addEventListener('click',handleClick);
+    menu2.addEventListener('click',handleClick);
+
+    
+    
+   /*inputs.onchange = getInputValue;
+   find.onclick = getInputValue;
+
+    function getInputValue() {
+      const inputValue = inputs.value.trim();
+      if (inputValue === '아메리카노' || inputValue ==='라떼')
+      console.log(inputs.value + '은(는) 메뉴에 없습니다')
+      inputs.value = ''  
+    } 
+    
+    for(let i = 0; i<btns.length; i++) {
+      btns[i].addEventListener('click', function() {
+      console.log(btns[i].textContent + '를 선택했습니다')
+      
+    })    
+    }
+    
+    
+    menu1.onclick = handleClick
+    menu2.onclick = handleClick */
+     
+     /*  function handleClick(e) {
+      //클릭했을 때 동작할 내용 작성
+      let currentMenu = e.target.textContent
+      console.log(currentMenu)
+       } */
+  </script>
+  
+</body>
+</html>
